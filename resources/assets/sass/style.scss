@@ -1,0 +1,113 @@
+@import "variables";
+
+html, body, h1, h2, h3, h4, h5, .h1, .h2, .h3, .h4, .h5, button, input, optgroup, select, textarea, .dropdown-item, .btn {
+    font-family: "source-han-sans-traditional", sans-serif;
+    font-style: normal;
+    font-weight: 100;
+}
+
+.navbar {
+    .navbar-brand {
+        font-family: "source-han-sans-traditional", sans-serif;
+        font-style: normal;
+        font-weight: 300;
+    }
+}
+
+a {
+    color: #4B0082;
+    text-decoration: none;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -ms-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+    &:hover {
+        color: #FF1493;
+        text-decoration: none;
+    }
+}
+
+.first-line-outdent {
+    margin-left: 1.25rem;
+    text-indent: -1.25rem;
+}
+
+.btn-tag {
+    font-weight: 100;
+    margin: 0 0 0.25rem 0;
+}
+
+.badge-tag {
+    font-weight: 500;
+    margin: 0 0 0.25rem 0;
+}
+
+.card {
+    .card-img-top {
+        overflow: hidden;
+        img {
+            max-width: 100%;
+            -webkit-transition: all 0.5s ease;
+            -moz-transition: all 0.5s ease;
+            -ms-transition: all 0.5s ease;
+            -o-transition: all 0.5s ease;
+            transition: all 0.5s ease;
+        }
+        &:hover img {
+            cursor: crosshair;
+            -webkit-transform: scale(1.1);
+            -moz-transform: scale(1.1);
+            -ms-transform: scale(1.1);
+            -o-transform: scale(1.1);
+            transform: scale(1.1);
+        }
+    }
+    .card-body {
+        img {
+            max-width: 100%;
+            border: 1px solid #D3E0E9;
+            border-radius: calc(0.25rem - 1px);
+        }
+    }
+}
+
+.breadcrumb {
+    margin: 0;
+    padding: 0;
+    background-color: $body-bg;
+}
+
+.ui-autocomplete {
+    padding: 0.25rem 0;
+    -webkit-border-radius: 0.25rem;
+    -moz-border-radius: 0.25rem;
+    border-radius: 0.25rem;
+}
+
+#scroll-to-top {
+    color: $light;
+    font-size: 2rem;
+    display: none;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    background-color: $warning;
+    border-radius: 4px;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 99;
+    &:hover {
+        cursor: pointer;
+        color: $warning;
+        background-color: inherit;
+        border: 1px solid $warning;
+    }
+}
+
+#footer {
+    color: $light;
+    background-color: $gray;
+    padding: 1.875rem;
+}
