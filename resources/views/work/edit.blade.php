@@ -3,20 +3,19 @@
 @section('content')
     @include('common.errors')
     
-    <form action="{{ route('works.edit', $work->id) }}" method="POST" class="form-horizontal">
+    <form action="{{ route('work.update', $work->id) }}" method="POST" class="form-horizontal">
         {{ csrf_field() }}
+        {{ method_field('PATCH') }}
 
         <div class="card border-secondary">
             <div class="card-header">
-                修改
+                <nav class="nav nav-pills">
+                    <a href="{{ route('work.edit', $work->id) }}" class="nav-link active">基本</a>
+                    <a href="{{ route('work.workTag.create', $work->id) }}" class="nav-link">標記</a>
+                </nav>
             </div>
 
             <div class="card-body border-secondary">
-                <nav class="nav nav-tabs flex-column flex-sm-row mb-3">
-                    <a href="{{ route('works.edit', $work->id) }}" class="nav-link active">基本</a>
-                    <a href="{{ route('workTags.update', $work->id) }}" class="nav-link">標記</a>
-                </nav>
-
                 <div class="form-group">
                     <label for="title">標題</label>
 
@@ -36,7 +35,7 @@
                         <textarea name="content" class="form-control" id="content" aria-describedby="content" required>{{ $work->content }}</textarea>
                     </div>
 
-                    <button type="button" class="btn btn-block" data-toggle="collapse" data-target="#CollapseContent" role="button" aria-expanded="false" aria-controls="CollapseContent" id="clickToHide">顯示</button>
+                    <button type="button" class="btn btn-block" data-toggle="collapse" data-target="#CollapseContent" role="button" aria-expanded="false" aria-controls="CollapseContent" id="clickToShow">顯示</button>
                 </div>
             </div>
 

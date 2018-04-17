@@ -1,19 +1,5 @@
 @import "variables";
 
-html, body, h1, h2, h3, h4, h5, .h1, .h2, .h3, .h4, .h5, button, input, optgroup, select, textarea, .dropdown-item, .btn {
-    font-family: "source-han-sans-traditional", sans-serif;
-    font-style: normal;
-    font-weight: 100;
-}
-
-.navbar {
-    .navbar-brand {
-        font-family: "source-han-sans-traditional", sans-serif;
-        font-style: normal;
-        font-weight: 300;
-    }
-}
-
 a {
     color: #4B0082;
     text-decoration: none;
@@ -33,36 +19,56 @@ a {
     text-indent: -1.25rem;
 }
 
-.btn-tag {
+.form-control, .btn {
     font-weight: 100;
-    margin: 0 0 0.25rem 0;
-}
-
-.badge-tag {
-    font-weight: 500;
-    margin: 0 0 0.25rem 0;
 }
 
 .card {
-    .card-img-top {
+    font-family: "source-han-sans-traditional", sans-serif;
+    font-weight: 100;
+}
+
+.btn-outline-secondary-tag {
+    margin: 0 0 0.25rem 0;
+}
+
+.badge-danger-tag {
+    cursor: pointer;
+    font-family: "source-han-sans-traditional", sans-serif;
+    font-weight: 500;
+    border: none;
+    margin: 0 0 0.25rem 0;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -ms-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+    &:hover {
+      background-color: #c9302c;
+    }
+}
+
+.card {
+    .card-img-frame {
         overflow: hidden;
-        img {
+        .card-img-top {
             max-width: 100%;
             -webkit-transition: all 0.5s ease;
             -moz-transition: all 0.5s ease;
             -ms-transition: all 0.5s ease;
             -o-transition: all 0.5s ease;
             transition: all 0.5s ease;
-        }
-        &:hover img {
-            cursor: crosshair;
-            -webkit-transform: scale(1.1);
-            -moz-transform: scale(1.1);
-            -ms-transform: scale(1.1);
-            -o-transform: scale(1.1);
-            transform: scale(1.1);
+            &:hover {
+                cursor: crosshair;
+                -webkit-transform: scale(1.2);
+                -moz-transform: scale(1.2);
+                -ms-transform: scale(1.2);
+                -o-transform: scale(1.2);
+                transform: scale(1.2);
+            }
         }
     }
+
     .card-body {
         img {
             max-width: 100%;
@@ -83,6 +89,18 @@ a {
     -webkit-border-radius: 0.25rem;
     -moz-border-radius: 0.25rem;
     border-radius: 0.25rem;
+    max-height: 300px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    z-index: 99 !important;
+}
+
+.ui-tooltip {
+    color: $light;
+    padding: 0 1rem;
+    background: rgba($gray, 0.8);
+    border: 1px solid $light;
+    box-shadow: none;
 }
 
 #scroll-to-top {
@@ -92,7 +110,7 @@ a {
     width: 50px;
     height: 50px;
     text-align: center;
-    background-color: $warning;
+    background-color: rgba($warning, 0.8);
     border-radius: 4px;
     position: fixed;
     bottom: 20px;

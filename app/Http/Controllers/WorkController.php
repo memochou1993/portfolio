@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Auth;
 use App\Work;
 use App\WorkTag;
 
@@ -19,17 +18,17 @@ class WorkController extends Controller
         
         $works = $works->paginate(20);
 
-        return view('works.index', [
+        return view('work.index', [
             'works' => $works->appends(request()->input()),
         ]);
     }
 
-    public function showAddForm()
+    public function create()
     {
-        return view('works.add');
+        return view('work.create');
     }
 
-    public function add(Request $request)
+    public function store(Request $request)
     {
         $this->validate($request, [
             'title' => 'required',
@@ -43,30 +42,27 @@ class WorkController extends Controller
         $works->content = $request->input('content');
         $works->save();
 
-        return redirect()->route('workTags.update', $works->id);
+        return redirect()->route('work.workTag.create', $works->id);
     }
 
-    public function view(Work $work)
+    public function show(Work $work)
     {
         $work_tags = Work::find($work->id)->workTag()->orderBy('name', 'desc')->get();
 
-        return view('works.view', [
+        return view('work.show', [
             'work' => $work,
             'work_tags' => $work_tags,
         ]);
     }
 
-    public function showEditForm(Work $work)
+    public function edit(Work $work)
     {
-        $work_tags = Work::find($work->id)->workTag()->orderBy('name', 'desc')->get();
-
-        return view('works.edit', [
+        return view('work.edit', [
             'work' => $work,
-            'work_tags' => $work_tags,
         ]);
     }
 
-    public function edit(Request $request, Work $work)
+    public function update(Request $request, Work $work)
     {
         $this->validate($request, [
             'title' => 'required',
@@ -82,7 +78,7 @@ class WorkController extends Controller
 
         WorkController::integrate($work);
 
-        return redirect()->route('works.view', $work);
+        return redirect()->route('work.show', $work);
     }
 
     public static function integrate(Work $work)
@@ -93,12 +89,12 @@ class WorkController extends Controller
             $full_text .= $column.':'.$work->$column.';';
         }
 
-        $full_text .= implode(',', Work::find($work->id)->workTag()->orderBy('name', 'desc')->pluck('name')->all()).';';
+        $full_text .= 'tag:'.implode(',', Work::find($work->id)->workTag()->orderBy('name', 'desc')->pluck('name')->all()).';';
 
         $work->update([
             'full_text' => $full_text,
         ]);
 
-        return redirect()->route('works.view', $work);
+        return redirect()->route('work.show', $work);
     }
 }

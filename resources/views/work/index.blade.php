@@ -5,10 +5,12 @@
         <div class="card-columns">
             @foreach ($works as $work)
                 <div class="card border-secondary">
-                    <a href="{{ route('works.view', $work->id) }}"><img src="{{ asset('storage/app/public/images/screenshots/thumbnail/'.$work->id.'.jpg') }}" class="card-img-top" alt="{{ $work->title }}" title="{!! $work->title !!}"></a>
+                    <div class="card-img-frame">
+                        <a href="{{ route('work.show', $work->id) }}"><img src="{{ asset('storage/app/public/images/screenshots/thumbnail/'.$work->id.'.jpg') }}" class="card-img-top" alt="{{ $work->title }}" title="{!! $work->title !!}"></a>
+                    </div>
 
                     <div class="card-body border-secondary">
-                        <a href="{{ route('works.view', $work->id) }}" class="card-link">{{ $work->title }}</a>
+                        <a href="{{ route('work.show', $work->id) }}" class="card-link">{{ $work->title }}</a>
                     </div>
                 </div>
             @endforeach

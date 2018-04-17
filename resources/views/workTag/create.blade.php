@@ -5,16 +5,14 @@
 
     <div class="card border-secondary">
         <div class="card-header">
-            修改
+            <nav class="nav nav-pills">
+                <a href="{{ route('work.edit', $work->id) }}" class="nav-link">基本</a>
+                <a href="{{ route('work.workTag.create', $work->id) }}" class="nav-link active">標記</a>
+            </nav>
         </div>
 
         <div class="card-body border-secondary">
-            <nav class="nav nav-tabs flex-column flex-sm-row mb-3">
-                <a href="{{ route('works.edit', $work->id) }}" class="nav-item nav-link">基本</a>
-                <a href="{{ route('workTags.showUpdateForm', $work->id) }}" class="nav-item nav-link active">標記</a>
-            </nav>
-
-            <form action="{{ route('workTags.add', $work) }}" method="POST" class="form-horizontal">
+            <form action="{{ route('work.workTag.store', $work) }}" method="POST" class="form-horizontal">
                 {{ csrf_field() }}
 
                 <div class="form-group">
@@ -39,25 +37,24 @@
                         <input type="text" name="tag" value="" class="form-control" id="tag" aria-describedby="tag">
 
                         <div class="input-group-append">
-                            <input type="submit" value="新增" class="btn btn-outline-secondary">
+                            <input type="submit" value="儲存" class="btn btn-success">
                         </div>
                     </div>
                 </div>
-
-                <div class="form-group">
-                    @foreach ($work_tags as $work_tag)
-                        <a href="{{ route('workTags.destroy', $work_tag->id) }}" class="badge badge-primary badge-tag">{{ $work_tag->name }} <i class="far fa-trash-alt"></i></a>
-                    @endforeach
-                </div>
             </form>
-        </div>
-        
-        <form action="{{ route('workTags.update', $work) }}" method="POST" class="form-horizontal">
-            {{ csrf_field() }}
 
-            <div class="card-footer border-secondary text-center">
-                <input type="submit" value="儲存" class="btn btn-success">
-            </div>
-        </form>
+            @foreach ($work_tags as $work_tag)
+                <div class="d-inline-flex">
+                    <form action="{{ route('work.workTag.destroy', [$work, $work_tag->id]) }}" method="POST">
+                        {{ csrf_field() }}
+                        {{ method_field('DELETE') }}
+
+                        <button class="badge badge-danger badge-danger-tag">
+                            {{ $work_tag->name }} <i class="far fa-trash-alt"></i>
+                        </button>
+                    </form>
+                </div>
+            @endforeach
+        </div>
     </div>
 @endsection

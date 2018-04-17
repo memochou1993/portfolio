@@ -12,6 +12,7 @@
         "ckeditor/ckeditor": "dev-full/stable",
         "davejamesmiller/laravel-breadcrumbs": "^4.2",
         "fideloper/proxy": "~3.3",
+        "jenssegers/agent": "^2.6",
         "laravel/framework": "5.5.*",
         "laravel/tinker": "~1.0"
     },

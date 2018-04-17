@@ -35,7 +35,7 @@
                 delay: 0,
                 source: function (request, response) {
                     $.ajax({
-                        url: "{{ route('workTags.search') }}",
+                        url: '{{ route("workTag.search") }}',
                         dataType: 'json',
                         data: {
                             term: extractLast(request.term)
@@ -55,8 +55,15 @@
             });
 
             $('textarea').ckeditor();
+            
+            $('[data-toggle="tooltip"]').tooltip({
+                position: {
+                    my: 'right center',
+                    at: 'left-5 center',
+                }
+            });
 
-            $('#clickToHide').click(function() {
+            $('#clickToShow').click(function() {
                 $(this).hide();
             })
         });

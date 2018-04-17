@@ -6,6 +6,7 @@ use Illuminate\Support\ServiceProvider;
 use Illuminate\Http\Request;
 use App\Work;
 use App\WorkTag;
+use Jenssegers\Agent\Agent;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -16,16 +17,21 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(Request $request)
     {
-        view()->share('request', $request);
+        $agent = new Agent();
 
-        $unfiltered_works = Work::select('id', 'title', 'date')->orderBy('date', 'desc')->get();
-        view()->share('unfiltered_works', $unfiltered_works);
+        view()->share([
+            'request' => $request,
+            'agent' => $agent,
+        ]);
 
-        $unfiltered_ordinary_tags = WorkTag::distinct()->whereNotNull('name')->where('type', '一般')->orderBy('name', 'desc')->pluck('name')->all();
-        view()->share('unfiltered_ordinary_tags', $unfiltered_ordinary_tags);
+        $distinct_works = Work::select('id', 'title', 'date')->orderBy('date', 'desc')->get();
+        view()->share('distinct_works', $distinct_works);
 
-        $unfiltered_year_tags = WorkTag::distinct()->whereNotNull('name')->where('type', '年分')->orderBy('name', 'desc')->pluck('name')->all();
-        view()->share('unfiltered_year_tags', $unfiltered_year_tags);
+        $distinct_ordinary_tags = WorkTag::distinct()->whereNotNull('name')->where('type', '一般')->orderBy('name', 'desc')->pluck('name')->all();
+        view()->share('distinct_ordinary_tags', $distinct_ordinary_tags);
+
+        $distinct_year_tags = WorkTag::distinct()->whereNotNull('name')->where('type', '年分')->orderBy('name', 'desc')->pluck('name')->all();
+        view()->share('distinct_year_tags', $distinct_year_tags);
     }
 
     /**

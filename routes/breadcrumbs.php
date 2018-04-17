@@ -5,44 +5,38 @@ Breadcrumbs::register('home.index', function ($breadcrumbs) {
     $breadcrumbs->push('首頁', url('/'));
 });
 
-// Home > Works
-Breadcrumbs::register('works.index', function ($breadcrumbs) {
+// Home > Work > Index
+Breadcrumbs::register('work.index', function ($breadcrumbs) {
     $breadcrumbs->parent('home.index');
-    $breadcrumbs->push('作品', route('works.index'));
+    $breadcrumbs->push('作品', route('work.index'));
 });
 
-// Home > Works > Add
-Breadcrumbs::register('works.showAddForm', function ($breadcrumbs) {
-    $breadcrumbs->parent('works.index');
-    $breadcrumbs->push('新增', route('works.showAddForm'));
+// Home > Work > Create
+Breadcrumbs::register('work.create', function ($breadcrumbs) {
+    $breadcrumbs->parent('work.index');
+    $breadcrumbs->push('新增');
 });
 
-// Home > Works > View
-Breadcrumbs::register('works.view', function ($breadcrumbs, $work) {
-    $breadcrumbs->parent('works.index');
-    $breadcrumbs->push($work->title, route('works.view', $work));
+// Home > Work > Show
+Breadcrumbs::register('work.show', function ($breadcrumbs, $work) {
+    $breadcrumbs->parent('work.index');
+    $breadcrumbs->push($work->title, route('work.show', $work));
 });
 
-// Home > Works > View > Edit
-Breadcrumbs::register('works.showEditForm', function ($breadcrumbs, $work) {
-    $breadcrumbs->parent('works.view', $work);
-    $breadcrumbs->push('修改');
+// Home > Work > Show > Edit
+Breadcrumbs::register('work.edit', function ($breadcrumbs, $work) {
+    $breadcrumbs->parent('work.show', $work);
+    $breadcrumbs->push('編輯');
 });
 
-// Home > Works > View > Edit
-Breadcrumbs::register('workTags.showUpdateForm', function ($breadcrumbs, $work) {
-    $breadcrumbs->parent('works.view', $work);
-    $breadcrumbs->push('修改');
-});
-
-// Home > About
-Breadcrumbs::register('home.about', function ($breadcrumbs) {
-    $breadcrumbs->parent('home.index');
-    $breadcrumbs->push('關於', route('home.about'));
+// Home > WorkTag > Create
+Breadcrumbs::register('work.workTag.create', function ($breadcrumbs, $work) {
+    $breadcrumbs->parent('work.show', $work);
+    $breadcrumbs->push('編輯');
 });
 
 // Home > Login
 Breadcrumbs::register('login', function ($breadcrumbs) {
     $breadcrumbs->parent('home.index');
-    $breadcrumbs->push('登入', route('home.about'));
+    $breadcrumbs->push('登入');
 });

@@ -4,14 +4,14 @@
     </div>
 
     <div class="col-md-12 mb-2">
-        @foreach ($unfiltered_ordinary_tags as $unfiltered_ordinary_tag)
-            <a href="{{ route('works.index', ['q' => $unfiltered_ordinary_tag,]) }}" class="btn btn-sm btn-outline-secondary btn-tag {{ $request->q == $unfiltered_ordinary_tag ? 'active' : '' }}">
-                {{ $unfiltered_ordinary_tag }}
+        @foreach ($distinct_ordinary_tags as $distinct_ordinary_tag)
+            <a href="{{ route('work.index', ['q' => $distinct_ordinary_tag,]) }}" class="btn btn-sm btn-outline-secondary btn-outline-secondary-tag {{ $request->q == $distinct_ordinary_tag ? 'active' : '' }}">
+                {{ $distinct_ordinary_tag }}
             </a>
         @endforeach
     </div>
 
-    {{--  @if (Request::is('/') or Request::is('works'))
+    {{--  @if (Request::is('/') or Request::is('work'))
         <div class="col-md-12 mb-2 text-right">
             找到 {{ $works->count() }} 筆結果
         </div>
