@@ -3,7 +3,7 @@
 @section('content')
     @include('common.errors')
     
-    <form action="{{ route('work.store') }}" method="POST" class="form-horizontal">
+    <form action="{{ route('works.store') }}" method="POST" class="form-horizontal">
         {{ csrf_field() }}
 
         <div class="card border-secondary">

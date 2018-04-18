@@ -7,13 +7,13 @@
 	<div class="collapse navbar-collapse" id="navbarSupportedContent">
 		<ul class="navbar-nav ml-auto">
 			@auth
-				@if (Route::current()->getName() == "work.show")
+				@if (Route::current()->getName() == "works.show")
 					<li class="nav-item active">
-						<a href="{{ route('work.edit', $work->id) }}" class="nav-link">編輯</a>
+						<a href="{{ route('works.edit', $work->id) }}" class="nav-link">編輯</a>
 					</li>
-				@elseif (Route::current()->getName() == "work.edit" or Route::current()->getName() == "work.workTag.create")
+				@elseif (Route::current()->getName() == "works.edit" or Route::current()->getName() == "works.workTags.create")
 					<li class="nav-item active">
-						<a href="{{ route('work.show', $work->id) }}" class="nav-link">查看</a>
+						<a href="{{ route('works.show', $work->id) }}" class="nav-link">查看</a>
 					</li>
 				@endif
 
@@ -22,8 +22,8 @@
 						作品
 					</a>
 					<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-						<a href="{{ route('work.index') }}" class="dropdown-item">一覽</a>
-						<a href="{{ route('work.create') }}" class="dropdown-item">新增</a>
+						<a href="{{ route('works.index') }}" class="dropdown-item">一覽</a>
+						<a href="{{ route('works.create') }}" class="dropdown-item">新增</a>
 					</div>
 				</li>
 			@else
@@ -33,7 +33,7 @@
 					</a>
 					<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
 						@foreach ($distinct_year_tags as $distinct_year_tag)
-							<a href="{{ route('work.index', ['q' => $distinct_year_tag,]) }}" class="dropdown-item {{ $request->q == $distinct_year_tag ? 'active' : '' }}">{{ $distinct_year_tag }}</a>
+							<a href="{{ route('works.index', ['q' => $distinct_year_tag,]) }}" class="dropdown-item {{ $request->q == $distinct_year_tag ? 'active' : '' }}">{{ $distinct_year_tag }}</a>
 						@endforeach
 					</div>
 				</li>

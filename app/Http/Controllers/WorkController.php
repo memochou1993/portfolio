@@ -18,14 +18,14 @@ class WorkController extends Controller
         
         $works = $works->paginate(20);
 
-        return view('work.index', [
+        return view('works.index', [
             'works' => $works->appends(request()->input()),
         ]);
     }
 
     public function create()
     {
-        return view('work.create');
+        return view('works.create');
     }
 
     public function store(Request $request)
@@ -42,14 +42,14 @@ class WorkController extends Controller
         $works->content = $request->input('content');
         $works->save();
 
-        return redirect()->route('work.workTag.create', $works->id);
+        return redirect()->route('works.workTags.create', $works->id);
     }
 
     public function show(Work $work)
     {
         $work_tags = Work::find($work->id)->workTag()->orderBy('name', 'desc')->get();
 
-        return view('work.show', [
+        return view('works.show', [
             'work' => $work,
             'work_tags' => $work_tags,
         ]);
@@ -57,7 +57,7 @@ class WorkController extends Controller
 
     public function edit(Work $work)
     {
-        return view('work.edit', [
+        return view('works.edit', [
             'work' => $work,
         ]);
     }
@@ -78,7 +78,7 @@ class WorkController extends Controller
 
         WorkController::integrate($work);
 
-        return redirect()->route('work.show', $work);
+        return redirect()->route('works.show', $work);
     }
 
     public static function integrate(Work $work)
@@ -95,6 +95,6 @@ class WorkController extends Controller
             'full_text' => $full_text,
         ]);
 
-        return redirect()->route('work.show', $work);
+        return redirect()->route('works.show', $work);
     }
 }

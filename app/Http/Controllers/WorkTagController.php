@@ -17,7 +17,7 @@ class WorkTagController extends Controller
     {
         $work_tags = Work::find($work->id)->workTag()->orderBy('name', 'desc')->get();
 
-        return view('workTag.create', [
+        return view('workTags.create', [
             'work' => $work,
             'work_tags' => $work_tags,
         ]);

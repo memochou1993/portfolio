@@ -35,7 +35,7 @@
                 delay: 0,
                 source: function (request, response) {
                     $.ajax({
-                        url: '{{ route("workTag.search") }}',
+                        url: '{{ route("workTags.search") }}',
                         dataType: 'json',
                         data: {
                             term: extractLast(request.term)

@@ -6,13 +6,13 @@
     <div class="card border-secondary">
         <div class="card-header">
             <nav class="nav nav-pills">
-                <a href="{{ route('work.edit', $work->id) }}" class="nav-link">基本</a>
-                <a href="{{ route('work.workTag.create', $work->id) }}" class="nav-link active">標記</a>
+                <a href="{{ route('works.edit', $work->id) }}" class="nav-link">基本</a>
+                <a href="{{ route('works.workTags.create', $work->id) }}" class="nav-link active">標記</a>
             </nav>
         </div>
 
         <div class="card-body border-secondary">
-            <form action="{{ route('work.workTag.store', $work) }}" method="POST" class="form-horizontal">
+            <form action="{{ route('works.workTags.store', $work) }}" method="POST" class="form-horizontal">
                 {{ csrf_field() }}
 
                 <div class="form-group">
@@ -45,7 +45,7 @@
 
             @foreach ($work_tags as $work_tag)
                 <div class="d-inline-flex">
-                    <form action="{{ route('work.workTag.destroy', [$work, $work_tag->id]) }}" method="POST">
+                    <form action="{{ route('works.workTags.destroy', [$work, $work_tag->id]) }}" method="POST">
                         {{ csrf_field() }}
                         {{ method_field('DELETE') }}
 

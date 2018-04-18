@@ -3,15 +3,15 @@
 @section('content')
     @include('common.errors')
     
-    <form action="{{ route('work.update', $work->id) }}" method="POST" class="form-horizontal">
+    <form action="{{ route('works.update', $work->id) }}" method="POST" class="form-horizontal">
         {{ csrf_field() }}
         {{ method_field('PATCH') }}
 
         <div class="card border-secondary">
             <div class="card-header">
                 <nav class="nav nav-pills">
-                    <a href="{{ route('work.edit', $work->id) }}" class="nav-link active">基本</a>
-                    <a href="{{ route('work.workTag.create', $work->id) }}" class="nav-link">標記</a>
+                    <a href="{{ route('works.edit', $work->id) }}" class="nav-link active">基本</a>
+                    <a href="{{ route('works.workTags.create', $work->id) }}" class="nav-link">標記</a>
                 </nav>
             </div>
 

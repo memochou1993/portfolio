@@ -15,7 +15,7 @@ Auth::routes();
 
 Route::get('/', ['as' =>'home.index', 'uses' => 'WorkController@index']);
 
-Route::resource('work', 'WorkController', ['except' => ['destroy',]]);
-Route::resource('work.workTag', 'WorkTagController', ['except' => ['index', 'show', 'edit', 'update']]);
+Route::resource('works', 'WorkController', ['except' => ['destroy',]]);
+Route::resource('works.workTags', 'WorkTagController', ['except' => ['index', 'show', 'edit', 'update']]);
 
-Route::get('workTag/search', ['as' =>'workTag.search', 'uses' => 'WorkTagController@search']);
+Route::get('workTags/search', ['as' =>'workTags.search', 'uses' => 'WorkTagController@search']);

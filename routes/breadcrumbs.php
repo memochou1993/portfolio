@@ -5,33 +5,33 @@ Breadcrumbs::register('home.index', function ($breadcrumbs) {
     $breadcrumbs->push('首頁', url('/'));
 });
 
-// Home > Work > Index
-Breadcrumbs::register('work.index', function ($breadcrumbs) {
+// Home > Works > Index
+Breadcrumbs::register('works.index', function ($breadcrumbs) {
     $breadcrumbs->parent('home.index');
-    $breadcrumbs->push('作品', route('work.index'));
+    $breadcrumbs->push('作品', route('works.index'));
 });
 
-// Home > Work > Create
-Breadcrumbs::register('work.create', function ($breadcrumbs) {
-    $breadcrumbs->parent('work.index');
+// Home > Works > Create
+Breadcrumbs::register('works.create', function ($breadcrumbs) {
+    $breadcrumbs->parent('works.index');
     $breadcrumbs->push('新增');
 });
 
-// Home > Work > Show
-Breadcrumbs::register('work.show', function ($breadcrumbs, $work) {
-    $breadcrumbs->parent('work.index');
-    $breadcrumbs->push($work->title, route('work.show', $work));
+// Home > Works > Show
+Breadcrumbs::register('works.show', function ($breadcrumbs, $work) {
+    $breadcrumbs->parent('works.index');
+    $breadcrumbs->push($work->title, route('works.show', $work));
 });
 
-// Home > Work > Show > Edit
-Breadcrumbs::register('work.edit', function ($breadcrumbs, $work) {
-    $breadcrumbs->parent('work.show', $work);
+// Home > Works > Show > Edit
+Breadcrumbs::register('works.edit', function ($breadcrumbs, $work) {
+    $breadcrumbs->parent('works.show', $work);
     $breadcrumbs->push('編輯');
 });
 
-// Home > WorkTag > Create
-Breadcrumbs::register('work.workTag.create', function ($breadcrumbs, $work) {
-    $breadcrumbs->parent('work.show', $work);
+// Home > WorkTags > Create
+Breadcrumbs::register('works.workTags.create', function ($breadcrumbs, $work) {
+    $breadcrumbs->parent('works.show', $work);
     $breadcrumbs->push('編輯');
 });
 
