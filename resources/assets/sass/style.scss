@@ -28,14 +28,18 @@ a {
     font-weight: 100;
 }
 
-.btn-outline-secondary-tag {
+.btn-tag {
     margin: 0 0 0.25rem 0;
 }
 
-.badge-danger-tag {
-    cursor: pointer;
+.badge {
     font-family: "source-han-sans-traditional", sans-serif;
     font-weight: 500;
+}
+
+.badge-tag {
+    cursor: pointer;
+    background-color: #d9534f;
     border: none;
     margin: 0 0 0.25rem 0;
     -webkit-transition: all 0.5s ease;

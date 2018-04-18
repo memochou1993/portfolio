@@ -17,27 +17,21 @@
 					</li>
 				@endif
 
-				<li class="nav-item dropdown {{ Request::is('work*') ? 'active' : '' }}">
-					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-						作品
-					</a>
-					<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-						<a href="{{ route('works.index') }}" class="dropdown-item">一覽</a>
-						<a href="{{ route('works.create') }}" class="dropdown-item">新增</a>
-					</div>
-				</li>
-			@else
-				<li class="nav-item dropdown {{ Request::is('work*') ? 'active' : '' }}">
-					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-						作品
-					</a>
-					<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-						@foreach ($distinct_year_tags as $distinct_year_tag)
-							<a href="{{ route('works.index', ['q' => $distinct_year_tag,]) }}" class="dropdown-item {{ $request->q == $distinct_year_tag ? 'active' : '' }}">{{ $distinct_year_tag }}</a>
-						@endforeach
-					</div>
+				<li class="nav-item {{ Request::is('works/create') ? 'active' : '' }}">
+					<a href="{{ route('works.create') }}" class="nav-link">新增</a>
 				</li>
 			@endauth
+
+			<li class="nav-item dropdown {{ Request::is('works*') ? 'active' : '' }}">
+				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					作品
+				</a>
+				<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+					@foreach ($distinct_year_tags as $distinct_year_tag)
+						<a href="{{ route('works.index', ['q' => $distinct_year_tag,]) }}" class="dropdown-item {{ $request->q == $distinct_year_tag ? 'active' : '' }}">{{ $distinct_year_tag }}</a>
+					@endforeach
+				</div>
+			</li>
 
 			@auth
 				<li class="nav-item">

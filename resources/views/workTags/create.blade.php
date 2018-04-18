@@ -49,7 +49,7 @@
                         {{ csrf_field() }}
                         {{ method_field('DELETE') }}
 
-                        <button class="badge badge-danger badge-danger-tag">
+                        <button class="badge badge-danger badge-tag">
                             {{ $work_tag->name }} <i class="far fa-trash-alt"></i>
                         </button>
                     </form>
