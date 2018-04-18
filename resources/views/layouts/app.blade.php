@@ -14,12 +14,12 @@
                 @include('includes.header')
 
                 <div class="d-flex flex-wrap">
-                    <div class="col-md-3 mb-4">
-                        @include('includes.sidebar')
+                    <div class="col-md-9 mb-4 order-md-2">
+                        @yield('content')
                     </div>
 
-                    <div class="col-md-9 mb-4">
-                        @yield('content')
+                    <div class="col-md-3 mb-4 order-md-1">
+                        @include('includes.sidebar')
                     </div>
                 </div>
             </div>
