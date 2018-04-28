@@ -14,7 +14,7 @@ class UpdateWorkTagsTable extends Migration
     public function up()
     {
         Schema::table('work_tags', function ($table) {
-            $table->string('type')->after('id');
+            $table->string('type')->after('id')->nullable();
         });
     }
 

@@ -14,7 +14,7 @@ class UpdateWorksTable extends Migration
     public function up()
     {
         Schema::table('works', function ($table) {
-            $table->string('date')->after('title');
+            $table->string('date')->after('title')->nullable();
         });
     }
 

@@ -1,4 +1,11 @@
 @import "variables";
+body, .form-control, .btn, .dropdown-item {
+    font-weight: 100;
+}
+
+.navbar-brand, h1, h2, h3, h4, h5 {
+    font-weight: 300;
+}
 
 a {
     color: #4B0082;
@@ -19,26 +26,13 @@ a {
     text-indent: -1.25rem;
 }
 
-.form-control, .btn {
-    font-weight: 100;
-}
-
-.card {
-    font-family: "source-han-sans-traditional", sans-serif;
-    font-weight: 100;
-}
-
 .btn-tag {
     margin: 0 0 0.25rem 0;
 }
 
-.badge {
-    font-family: "source-han-sans-traditional", sans-serif;
-    font-weight: 500;
-}
-
 .badge-tag {
     cursor: pointer;
+    font-weight: 700;
     background-color: #d9534f;
     border: none;
     margin: 0 0 0.25rem 0;
