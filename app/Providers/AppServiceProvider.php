@@ -27,6 +27,9 @@ class AppServiceProvider extends ServiceProvider
         $distinct_works = Work::select('id', 'title', 'date')->orderBy('date', 'desc')->get();
         view()->share('distinct_works', $distinct_works);
 
+        $featured_tags = ["Laravel", ];
+        view()->share('featured_tags', $featured_tags);
+
         $distinct_ordinary_tags = WorkTag::distinct()->whereNotNull('name')->where('type', '一般')->orderBy('name', 'desc')->pluck('name')->all();
         view()->share('distinct_ordinary_tags', $distinct_ordinary_tags);
 
