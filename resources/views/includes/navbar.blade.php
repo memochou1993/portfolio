@@ -43,6 +43,13 @@
 						{{ csrf_field() }}
 					</form>
 				</li>
+			@else
+				<li class="nav-item">
+					<a href="//memochou1993.github.io/blog" class="nav-link">部落格</a>
+				</li>
+				<li class="nav-item">
+					<a href="//memo.epoch.tw/collection/" class="nav-link">報告集</a>
+				</li>
 			@endauth
 		</ul>
 	</div>
