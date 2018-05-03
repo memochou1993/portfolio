@@ -28,7 +28,7 @@
                         <textarea name="content" class="form-control" id="content" aria-describedby="content" required>{{ old('content') }}</textarea>
                     </div>
 
-                    <a class="form-control" data-toggle="collapse" href="#CollapseContent" role="button" aria-expanded="false" aria-controls="CollapseContent" id="clickToHide">顯示</a>
+                    <button type="button" class="btn btn-block" data-toggle="collapse" href="#CollapseContent" role="button" aria-expanded="false" aria-controls="CollapseContent" id="clickToShow">顯示</button>
                 </div>
             </div>
 
