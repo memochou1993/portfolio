@@ -45,7 +45,7 @@
 				</li>
 			@else
 				<li class="nav-item">
-					<a href="//memochou1993.github.io/blog/" target="_blank" class="nav-link">部落格</a>
+					<a href="//memochou1993.github.io" target="_blank" class="nav-link">部落格</a>
 				</li>
 				<li class="nav-item">
 					<a href="//memo.epoch.tw/collection/" target="_blank" class="nav-link">報告集</a>
