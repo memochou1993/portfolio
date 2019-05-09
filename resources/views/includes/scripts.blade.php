@@ -1,8 +1,8 @@
-    <script src="{{ asset('public/js/app.js') }}"></script>
-    <script src="{{ asset('public/js/jquery-ui.min.js') }}"></script>   
-    <script src="{{ asset('public/js/fontawesome-all.min.js') }}"></script>
-    <script src="{{ asset('public/vendor/ckeditor/ckeditor/ckeditor.js') }}"></script>
-    <script src="{{ asset('public/vendor/ckeditor/ckeditor/adapters/jquery.js') }}"></script>
+    <script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{ asset('js/jquery-ui.min.js') }}"></script>   
+    <script src="{{ asset('js/fontawesome-all.min.js') }}"></script>
+    <script src="{{ asset('vendor/ckeditor/ckeditor/ckeditor.js') }}"></script>
+    <script src="{{ asset('vendor/ckeditor/ckeditor/adapters/jquery.js') }}"></script>
     <script>
         function split(value) {
             return value.split(',');
