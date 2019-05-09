@@ -19,3 +19,7 @@ Route::resource('works', 'WorkController', ['except' => ['destroy',]]);
 Route::resource('works.workTags', 'WorkTagController', ['except' => ['index', 'show', 'edit', 'update']]);
 
 Route::get('workTags/search', ['as' =>'workTags.search', 'uses' => 'WorkTagController@search']);
+
+Route::get('admin', function () {
+    return redirect('login');
+});
