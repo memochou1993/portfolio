@@ -20,28 +20,31 @@ class AppServiceProvider extends ServiceProvider
     {
         $agent = new Agent();
 
-        view()->share([
-            'request' => $request,
-            'agent' => $agent,
-        ]);
-
         $distinct_works = Schema::hasTable('works')
             ? Work::select('id', 'title', 'date')->orderBy('date', 'desc')->get()
             : [];
-        view()->share('distinct_works', $distinct_works);
 
-        $featured_tags = ["Laravel", ];
-        view()->share('featured_tags', $featured_tags);
+        $featured_tags = [
+            "Laravel",
+            "Vue",
+        ];
 
         $distinct_ordinary_tags = Schema::hasTable('work_tags')
             ? WorkTag::distinct()->whereNotNull('name')->where('type', '一般')->orderBy('name', 'desc')->pluck('name')->all()
             : [];
-        view()->share('distinct_ordinary_tags', $distinct_ordinary_tags);
 
         $distinct_year_tags = Schema::hasTable('work_tags')
             ? WorkTag::distinct()->whereNotNull('name')->where('type', '年分')->orderBy('name', 'desc')->pluck('name')->all()
             : [];
-        view()->share('distinct_year_tags', $distinct_year_tags);
+
+        vidw()->share(compact([
+            'request',
+            'agent',
+            'distinct_works',
+            'featured_tags',
+            'distinct_ordinary_tags',
+            'distinct_year_tags',
+        ]));
     }
 
     /**
