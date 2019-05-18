@@ -37,7 +37,7 @@ class AppServiceProvider extends ServiceProvider
             ? WorkTag::distinct()->whereNotNull('name')->where('type', '年分')->orderBy('name', 'desc')->pluck('name')->all()
             : [];
 
-        vidw()->share(compact([
+        view()->share(compact([
             'request',
             'agent',
             'distinct_works',
