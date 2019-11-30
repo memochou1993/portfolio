@@ -13,14 +13,15 @@
 
 Auth::routes();
 
-Route::group(['middleware' => 'auth'], function () {
-    Route::resource('works', 'WorkController')->except('destroy');
-    Route::resource('works.workTags', 'WorkTagController')->only('create', 'store', 'destroy');
+Route::get('/', 'WorkController@index')->name('home.index');
 
-    Route::get('/', 'WorkController@index')->name('home.index');
+Route::group(['middleware' => 'auth'], function () {
+    Route::resource('works', 'WorkController')->only('create', 'store', 'edit', 'update');
+    Route::resource('works.workTags', 'WorkTagController')->only('create', 'store', 'destroy');
+    Route::get('workTags/search', 'WorkTagController@search')->name('workTags.search');
 });
 
-Route::get('workTags/search', 'WorkTagController@search')->name('workTags.search');
+Route::resource('works', 'WorkController')->only('index', 'show');
 
 Route::get('admin', function () {
     return redirect('login');
