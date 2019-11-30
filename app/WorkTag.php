@@ -12,7 +12,7 @@ class WorkTag extends Model
         'type', 'name',
     ];
 
-    public function item()
+    public function work()
     {
         return $this->belongsTo(Work::class);
     }

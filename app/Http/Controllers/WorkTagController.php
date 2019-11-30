@@ -2,20 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\WorkTag;
 use App\Work;
+use App\WorkTag;
+use Illuminate\Http\Request;
 
 class WorkTagController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth')->except('logout');
-    }
-
     public function create(Work $work)
     {
-        $work_tags = Work::find($work->id)->workTag()->orderBy('name', 'desc')->get();
+        $work_tags = Work::find($work->id)
+            ->tags()
+            ->orderBy('name', 'desc')
+            ->get();
 
         return view('workTags.create', [
             'work' => $work,
@@ -26,19 +24,21 @@ class WorkTagController extends Controller
     public function store(Request $request, Work $work)
     {
         if ($request->input('tag')) {
-            foreach (explode(',', trim($request->input('tag'))) as $work_tag) {
+            $data = [];
+
+            foreach (explode(',', $request->input('tag')) as $work_tag) {
                 $data[] = [
                     'type' => $request->input('type'),
-                    'name' => $work_tag,
+                    'name' => trim($work_tag),
                     'work_id' => $work->id,
                 ];
             }
 
-            $work_tags = WorkTag::insert($data);
+            WorkTag::insert($data);
+
+            WorkController::integrate($work);
         }
 
-        WorkController::integrate($work);
-        
         return redirect()->back();
     }
 
@@ -54,11 +54,20 @@ class WorkTagController extends Controller
     public function search(Request $request)
     {
         $term = $request->get('term');
-        
-        $work_tags = WorkTag::distinct()->whereNotNull('name')->where('name', 'LIKE', '%'.$term.'%')->orderBy('name', 'desc')->pluck('name')->all();
-        
+
+        $work_tags = WorkTag::distinct()
+            ->whereNotNull('name')
+            ->where('name', 'LIKE', '%'.$term.'%')
+            ->orderBy('name', 'desc')
+            ->pluck('name')
+            ->all();
+
+        $data = [];
+
         foreach ($work_tags as $work_tag) {
-            $data[] = ['value' => $work_tag,];
+            $data[] = [
+                'value' => $work_tag,
+            ];
         }
 
         return $data;

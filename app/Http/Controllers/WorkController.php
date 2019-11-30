@@ -2,9 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Work;
-use App\WorkTag;
+use Illuminate\Http\Request;
 
 class WorkController extends Controller
 {
@@ -15,11 +14,11 @@ class WorkController extends Controller
         foreach (explode(' ', trim($request->q)) as $query) {
             $works->where('full_text', 'LIKE', '%'.$query.'%');
         };
-        
-        $works = $works->paginate(20);
+
+        $works = $works->paginate(20)->appends(request()->input());
 
         return view('works.index', [
-            'works' => $works->appends(request()->input()),
+            'works' => $works,
         ]);
     }
 
@@ -47,7 +46,10 @@ class WorkController extends Controller
 
     public function show(Work $work)
     {
-        $work_tags = Work::find($work->id)->workTag()->orderBy('name', 'desc')->get();
+        $work_tags = Work::find($work->id)
+            ->tags()
+            ->orderBy('name', 'desc')
+            ->get();
 
         return view('works.show', [
             'work' => $work,
@@ -83,13 +85,21 @@ class WorkController extends Controller
 
     public static function integrate(Work $work)
     {
+        $columns = ['title', 'date', 'content'];
+
         $full_text = '';
-        
-        foreach (['title', 'date', 'content',] as $column) {
+
+        foreach ($columns as $column) {
             $full_text .= $column.':'.$work->$column.';';
         }
 
-        $full_text .= 'tag:'.implode(',', Work::find($work->id)->workTag()->orderBy('name', 'desc')->pluck('name')->all()).';';
+        $work_tags = Work::find($work->id)
+            ->tags()
+            ->orderBy('name', 'desc')
+            ->pluck('name')
+            ->all();
+
+        $full_text .= 'tag:'.implode(',', $work_tags).';';
 
         $work->update([
             'full_text' => $full_text,
