@@ -8,7 +8,7 @@
         <div id="app">
             <a id="scroll-to-top"><i class="fas fa-arrow-circle-up"></i></a>
             
-            <div class="container mb-4">
+            <div class="container my-4">
                 @include('includes.navbar')
 
                 @include('includes.header')
