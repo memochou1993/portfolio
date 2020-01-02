@@ -6,7 +6,9 @@
             @foreach ($works as $work)
                 <div class="card border-secondary">
                     <div class="card-img-frame">
-                        <a href="{{ route('works.show', $work->id) }}"><img src="{{ asset('storage/images/screenshots/thumbnail/'.$work->id.'.jpg') }}" class="card-img-top" alt="{{ $work->title }}" title="{!! $work->title !!}"></a>
+                        <a href="{{ route('works.show', $work->id) }}">
+                            <img src="{{ asset('storage/images/screenshots/thumbnail/'.$work->id.'.jpg') }}" class="card-img-top" alt="{{ $work->title }}" title="{{ $work->title }}">
+                        </a>
                     </div>
 
                     <div class="card-body border-secondary">
@@ -22,6 +24,6 @@
     @endif
     
     <div class="d-flex justify-content-center my-3">
-        {{$works->links('vendor.pagination.bootstrap-4')}}
+        {{ $works->links('vendor.pagination.bootstrap-4') }}
     </div>
 @endsection

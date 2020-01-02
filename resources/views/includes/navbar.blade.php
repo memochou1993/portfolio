@@ -30,7 +30,7 @@
 				</a>
 				<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
 					@foreach ($distinct_year_tags as $distinct_year_tag)
-						<a href="{{ route('works.index', ['q' => $distinct_year_tag,]) }}" class="dropdown-item {{ $request->q == $distinct_year_tag ? 'active' : '' }}">{{ $distinct_year_tag }}</a>
+						<a href="{{ route('works.index', ['q' => $distinct_year_tag]) }}" class="dropdown-item {{ $request->q == $distinct_year_tag ? 'active' : '' }}">{{ $distinct_year_tag }}</a>
 					@endforeach
 				</div>
 			</li>
