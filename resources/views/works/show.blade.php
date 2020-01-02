@@ -17,7 +17,7 @@
             </div>
 
             <div>
-                {!! $work->content !!}
+                {!! str_replace('http', request()->getScheme(), $work->content) !!}
             </div>
         </div>
         
