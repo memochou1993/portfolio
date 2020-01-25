@@ -7,7 +7,7 @@
 
     <div class="card" hidden>
         <div class="card-header">
-            <h5 class="text-center my-0">{!! $work->title !!}</h5>
+            <div class="title text-center my-0">{!! $work->title !!}</div>
         </div>
         
         <div class="card-body">
