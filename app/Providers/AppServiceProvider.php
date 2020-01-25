@@ -27,6 +27,7 @@ class AppServiceProvider extends ServiceProvider
         $featured_tags = [
             "Laravel",
             "Vue",
+            "Go",
         ];
 
         $distinct_ordinary_tags = Schema::hasTable('work_tags')

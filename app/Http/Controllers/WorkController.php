@@ -11,9 +11,18 @@ class WorkController extends Controller
     {
         $works = Work::inRandomOrder();
 
-        foreach (explode(' ', trim($request->q)) as $query) {
-            $works->where('full_text', 'LIKE', '%'.$query.'%');
-        };
+        $q = $request->q;
+        $tag = $request->tag;
+
+        if ($q) {
+            $works->where('full_text', 'LIKE', '%'.$q.'%');
+        }
+
+        if ($tag) {
+            $works->whereHas('tags', function ($query) use ($tag) {
+                $query->where('name', $tag);
+            });
+        }
 
         $works = $works->paginate(20)->appends(request()->input());
 
