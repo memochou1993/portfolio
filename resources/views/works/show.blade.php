@@ -24,7 +24,7 @@
         @if (count($work_tags) > 0)
             <div class="card-footer">
                 @foreach ($work_tags as $work_tag)
-                    <a href="{{ route('works.index', ['q' => $work_tag->name]) }}" class="badge badge-primary">
+                    <a href="{{ route('works.index', ['tag' => $work_tag->name]) }}" class="badge badge-primary">
                         {{ $work_tag->name }}
                     </a>
                 @endforeach
