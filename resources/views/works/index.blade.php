@@ -7,7 +7,7 @@
                 <div class="card border-secondary">
                     <div class="card-img-frame">
                         <a href="{{ route('works.show', $work->id) }}">
-                            <img src="{{ asset('storage/images/screenshots/thumbnail/'.$work->id.'.jpg') }}" class="card-img-top" alt="{{ $work->title }}" title="{{ $work->title }}">
+                            <img src="{{ asset('images/screenshots/thumbnail/'.$work->id.'.jpg') }}" class="card-img-top" alt="{{ $work->title }}" title="{{ $work->title }}">
                         </a>
                     </div>
 

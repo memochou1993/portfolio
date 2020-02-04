@@ -2,7 +2,7 @@
 
 @section('content')
     <div id="loading">
-        <img src="{{ asset('img/loading.svg') }}" class="my-5" alt="Loading...">
+        <img src="{{ asset('images/loading.svg') }}" class="my-5" alt="Loading...">
     </div>
 
     <div class="card" hidden>
