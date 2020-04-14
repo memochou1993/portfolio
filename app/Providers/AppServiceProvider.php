@@ -21,25 +21,25 @@ class AppServiceProvider extends ServiceProvider
     {
         try {
             $agent = new Agent();
-    
+
             $distinct_works = Schema::hasTable('works')
                 ? Work::select('id', 'title', 'date')->orderBy('date', 'desc')->get()
                 : [];
-    
+
             $featured_tags = [
                 "Laravel",
                 "Vue",
                 "Go",
             ];
-    
+
             $distinct_ordinary_tags = Schema::hasTable('work_tags')
                 ? WorkTag::distinct()->whereNotNull('name')->where('type', '一般')->orderBy('name', 'desc')->pluck('name')->all()
                 : [];
-    
+
             $distinct_year_tags = Schema::hasTable('work_tags')
                 ? WorkTag::distinct()->whereNotNull('name')->where('type', '年分')->orderBy('name', 'desc')->pluck('name')->all()
                 : [];
-    
+
             view()->share(compact([
                 'request',
                 'agent',
