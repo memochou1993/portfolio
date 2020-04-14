@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Work;
 use App\WorkTag;
 use Jenssegers\Agent\Agent;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Schema;
 
 class AppServiceProvider extends ServiceProvider
@@ -20,39 +20,37 @@ class AppServiceProvider extends ServiceProvider
     public function boot(Request $request)
     {
         try {
-            DB::connection()->getPdo();
+            $agent = new Agent();
+    
+            $distinct_works = Schema::hasTable('works')
+                ? Work::select('id', 'title', 'date')->orderBy('date', 'desc')->get()
+                : [];
+    
+            $featured_tags = [
+                "Laravel",
+                "Vue",
+                "Go",
+            ];
+    
+            $distinct_ordinary_tags = Schema::hasTable('work_tags')
+                ? WorkTag::distinct()->whereNotNull('name')->where('type', '一般')->orderBy('name', 'desc')->pluck('name')->all()
+                : [];
+    
+            $distinct_year_tags = Schema::hasTable('work_tags')
+                ? WorkTag::distinct()->whereNotNull('name')->where('type', '年分')->orderBy('name', 'desc')->pluck('name')->all()
+                : [];
+    
+            view()->share(compact([
+                'request',
+                'agent',
+                'distinct_works',
+                'featured_tags',
+                'distinct_ordinary_tags',
+                'distinct_year_tags',
+            ]));
         } catch (\Exception $e) {
-            die($e);
+            Log::error($e);
         }
-
-        $agent = new Agent();
-
-        $distinct_works = Schema::hasTable('works')
-            ? Work::select('id', 'title', 'date')->orderBy('date', 'desc')->get()
-            : [];
-
-        $featured_tags = [
-            "Laravel",
-            "Vue",
-            "Go",
-        ];
-
-        $distinct_ordinary_tags = Schema::hasTable('work_tags')
-            ? WorkTag::distinct()->whereNotNull('name')->where('type', '一般')->orderBy('name', 'desc')->pluck('name')->all()
-            : [];
-
-        $distinct_year_tags = Schema::hasTable('work_tags')
-            ? WorkTag::distinct()->whereNotNull('name')->where('type', '年分')->orderBy('name', 'desc')->pluck('name')->all()
-            : [];
-
-        view()->share(compact([
-            'request',
-            'agent',
-            'distinct_works',
-            'featured_tags',
-            'distinct_ordinary_tags',
-            'distinct_year_tags',
-        ]));
     }
 
     /**
