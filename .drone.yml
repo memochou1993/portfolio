@@ -4,7 +4,7 @@ name: default
 
 steps:
 - name: build
-  image: laradock/workspace:2.6.1-7.1
+  image: laradock/workspace:2.6.1-7.2
   commands:
   - php -v
   - composer -V
