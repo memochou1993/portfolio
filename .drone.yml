@@ -22,4 +22,6 @@ steps:
 trigger:
   branch:
   - feature/drone
+  event:
+  - push
 ...
