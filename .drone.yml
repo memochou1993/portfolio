@@ -3,7 +3,7 @@ kind: pipeline
 name: default
 
 steps:
-- name: build
+- name: test
   image: laradock/workspace:2.6.1-7.2
   commands:
   - php -v
@@ -11,6 +11,5 @@ steps:
   - cp .env.example .env
   - composer install --prefer-dist
   - php artisan key:generate
-  - php artisan migrate
   - ./vendor/bin/phpunit
 ...
