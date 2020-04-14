@@ -1,0 +1,21 @@
+---
+kind: pipeline
+name: default
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+- name: backend
+  pull: if-not-exists
+  image: laradock/workspace:latest
+  commands:
+  - php -v
+  - composer -V
+  - cp .env.example .env
+  - composer install --prefer-dist
+  - php artisan key:generate
+  - php artisan migrate
+  - ./vendor/bin/phpunit
+...
