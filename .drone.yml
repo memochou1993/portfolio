@@ -1,24 +1,16 @@
 ---
-    kind: pipeline
-    type: docker
-    name: default
-    
-    steps:
-    - name: build
-      image: laradock/workspace:latest
-      commands:
-      - php -v
-      - composer -V
-      - cp .env.example .env
-      - composer install --prefer-dist
-      - php artisan key:generate
-      - php artisan migrate
-      - ./vendor/bin/phpunit
-    
-    trigger:
-      branch:
-      - feature/drone
-      event:
-      - push
-    ...
-    
+kind: pipeline
+name: default
+
+steps:
+- name: build
+  image: laradock/workspace:2.6.1-7.1
+  commands:
+  - php -v
+  - composer -V
+  - cp .env.example .env
+  - composer install --prefer-dist
+  - php artisan key:generate
+  - php artisan migrate
+  - ./vendor/bin/phpunit
+...
