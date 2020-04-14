@@ -1,4 +1,3 @@
----
 kind: pipeline
 name: default
 
@@ -12,4 +11,3 @@ steps:
   - composer install --prefer-dist
   - php artisan key:generate
   - ./vendor/bin/phpunit
-...

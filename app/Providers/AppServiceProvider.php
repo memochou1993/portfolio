@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Work;
 use App\WorkTag;
 use Jenssegers\Agent\Agent;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
 class AppServiceProvider extends ServiceProvider
@@ -18,6 +19,12 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(Request $request)
     {
+        try {
+            DB::connection()->getPdo();
+        } catch (\Exception $e) {
+            die($e);
+        }
+
         $agent = new Agent();
 
         $distinct_works = Schema::hasTable('works')
