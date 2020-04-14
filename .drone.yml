@@ -18,4 +18,8 @@ steps:
   - php artisan key:generate
   - php artisan migrate
   - ./vendor/bin/phpunit
+
+trigger:
+  branch:
+  - feature/drone
 ...
