@@ -1,14 +1,10 @@
 ---
 kind: pipeline
+type: docker
 name: default
 
-platform:
-  os: linux
-  arch: amd64
-
 steps:
-- name: backend
-  pull: if-not-exists
+- name: build
   image: laradock/workspace:latest
   commands:
   - php -v
