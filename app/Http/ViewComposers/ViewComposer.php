@@ -6,8 +6,6 @@ use App\Work;
 use App\WorkTag;
 use Illuminate\View\View;
 use Jenssegers\Agent\Agent;
-use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Facades\Schema;
 
 class ViewComposer
 {
@@ -19,40 +17,40 @@ class ViewComposer
      * @param  User  $user
      * @return void
      */
-    public function __construct()
+    public function __construct(Agent $agent, Work $work, WorkTag $workTag)
     {
-        try {
-            $agent = new Agent();
+        $distinct_works = $work->select('id', 'title', 'date')->orderBy('date', 'desc')->get();
 
-            $distinct_works = Schema::hasTable('works')
-                ? Work::select('id', 'title', 'date')->orderBy('date', 'desc')->get()
-                : [];
+        $featured_tags = [
+            "Laravel",
+            "Vue",
+            "Go",
+        ];
 
-            $featured_tags = [
-                "Laravel",
-                "Vue",
-                "Go",
-            ];
+        $distinct_ordinary_tags = $workTag
+            ->distinct()
+            ->whereNotNull('name')
+            ->where('type', '一般')
+            ->orderBy('name', 'desc')
+            ->pluck('name')
+            ->all();
 
-            $distinct_ordinary_tags = Schema::hasTable('work_tags')
-                ? WorkTag::distinct()->whereNotNull('name')->where('type', '一般')->orderBy('name', 'desc')->pluck('name')->all()
-                : [];
+        $distinct_year_tags = $workTag
+            ->distinct()
+            ->whereNotNull('name')
+            ->where('type', '年分')
+            ->orderBy('name', 'desc')
+            ->pluck('name')
+            ->all();
 
-            $distinct_year_tags = Schema::hasTable('work_tags')
-                ? WorkTag::distinct()->whereNotNull('name')->where('type', '年分')->orderBy('name', 'desc')->pluck('name')->all()
-                : [];
-
-            $this->data = compact([
-                'request',
-                'agent',
-                'distinct_works',
-                'featured_tags',
-                'distinct_ordinary_tags',
-                'distinct_year_tags',
-            ]);
-        } catch (\Exception $e) {
-            Log::error($e);
-        }
+        $this->data = compact([
+            'request',
+            'agent',
+            'distinct_works',
+            'featured_tags',
+            'distinct_ordinary_tags',
+            'distinct_year_tags',
+        ]);
     }
 
     /**
