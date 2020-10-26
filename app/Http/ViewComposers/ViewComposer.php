@@ -21,7 +21,7 @@ class ViewComposer
      */
     public function __construct(Request $request, Agent $agent, Work $work, WorkTag $workTag)
     {
-	$distinct_works = $work
+	    $distinct_works = $work
             ->select('id', 'title', 'date')
             ->get()
             ->sortByDesc(function ($work) {
