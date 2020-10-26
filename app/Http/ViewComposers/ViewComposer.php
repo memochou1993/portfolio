@@ -5,6 +5,7 @@ namespace App\Http\ViewComposers;
 use App\Work;
 use App\WorkTag;
 use Illuminate\View\View;
+use Illuminate\Support\Str;
 use Jenssegers\Agent\Agent;
 use Illuminate\Http\Request;
 
@@ -20,7 +21,12 @@ class ViewComposer
      */
     public function __construct(Request $request, Agent $agent, Work $work, WorkTag $workTag)
     {
-        $distinct_works = $work->select('id', 'title', 'date')->orderBy('date', 'desc')->get();
+	$distinct_works = $work
+            ->select('id', 'title', 'date')
+            ->get()
+            ->sortByDesc(function ($work) {
+                return Str::after($work->date, ' - ');
+            });
 
         $featured_tags = [
             "Laravel",
