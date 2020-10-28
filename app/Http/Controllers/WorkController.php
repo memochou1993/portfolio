@@ -43,8 +43,8 @@ class WorkController extends Controller
     {
         $this->validate($request, [
             'title' => 'required',
-            'begin_date' => 'required',
-            'end_date' => 'required',
+            'begin_date' => 'required|date_format:Y.m',
+            'end_date' => 'required|date_format:Y.m',
             'content' => 'required',
         ]);
 
@@ -82,8 +82,8 @@ class WorkController extends Controller
     {
         $this->validate($request, [
             'title' => 'required',
-            'begin_date' => 'required',
-            'end_date' => 'required',
+            'begin_date' => 'required|date_format:Y.m',
+            'end_date' => 'required|date_format:Y.m',
             'content' => 'required',
         ]);
 
