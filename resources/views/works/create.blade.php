@@ -16,9 +16,15 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="date">日期</label>
+                    <label for="begin-date">開始日期</label>
 
-                    <input type="text" name="date" value="{{ old('date') }}" class="form-control" id="date" aria-describedby="date" required>
+                    <input type="text" name="begin_date" value="{{ old('begin_date') }}" class="form-control" id="begin-date" aria-describedby="begin-date" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="end-date">結束日期</label>
+
+                    <input type="text" name="end_date" value="{{ old('end_date') }}" class="form-control" id="end-date" aria-describedby="end-date" required>
                 </div>
 
                 <div class="form-group">

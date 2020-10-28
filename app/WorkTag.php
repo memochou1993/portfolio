@@ -9,7 +9,8 @@ class WorkTag extends Model
     protected $table = 'work_tags';
 
     protected $fillable = [
-        'type', 'name',
+        'type',
+        'name',
     ];
 
     public function work()

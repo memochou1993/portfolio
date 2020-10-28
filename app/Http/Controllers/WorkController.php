@@ -25,7 +25,7 @@ class WorkController extends Controller
         }
 
         $works = $works
-            ->orderBy('created_at')
+            ->orderBy('end_date')
             ->paginate(20)
             ->appends(request()->input());
 
@@ -43,13 +43,15 @@ class WorkController extends Controller
     {
         $this->validate($request, [
             'title' => 'required',
-            'date' => 'required',
+            'begin_date' => 'required',
+            'end_date' => 'required',
             'content' => 'required',
         ]);
 
         $works = new Work;
         $works->title = $request->input('title');
-        $works->date = $request->input('date');
+        $works->begin_date = $request->input('begin_date');
+        $works->end_date = $request->input('end_date');
         $works->content = $request->input('content');
         $works->save();
 
@@ -80,13 +82,15 @@ class WorkController extends Controller
     {
         $this->validate($request, [
             'title' => 'required',
-            'date' => 'required',
+            'begin_date' => 'required',
+            'end_date' => 'required',
             'content' => 'required',
         ]);
 
         $work->update([
             'title' => $request->input('title'),
-            'date' => $request->input('date'),
+            'begin_date' => $request->input('begin_date'),
+            'end_date' => $request->input('end_date'),
             'content' => $request->input('content'),
         ]);
 
@@ -97,7 +101,7 @@ class WorkController extends Controller
 
     public static function integrate(Work $work)
     {
-        $columns = ['title', 'date', 'content'];
+        $columns = ['title', 'begin_date', 'end_date', 'content'];
 
         $full_text = '';
 

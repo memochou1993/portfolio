@@ -9,7 +9,11 @@ class Work extends Model
     protected $table = 'works';
 
     protected $fillable = [
-        'title', 'date', 'content', 'full_text',
+        'title',
+        'begin_date',
+        'end_date',
+        'content',
+        'full_text',
     ];
 
     public function tags()

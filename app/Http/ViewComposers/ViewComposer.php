@@ -22,11 +22,9 @@ class ViewComposer
     public function __construct(Request $request, Agent $agent, Work $work, WorkTag $workTag)
     {
 	    $distinct_works = $work
-            ->select('id', 'title', 'date')
-            ->get()
-            ->sortByDesc(function ($work) {
-                return Str::after($work->date, ' - ');
-            });
+            ->select('id', 'title', 'begin_date', 'end_date')
+            ->orderBy('end_date')
+            ->get();
 
         $featured_tags = [
             "Laravel",
