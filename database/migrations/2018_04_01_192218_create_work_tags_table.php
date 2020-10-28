@@ -15,6 +15,7 @@ class CreateWorkTagsTable extends Migration
     {
         Schema::create('work_tags', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('type')->nullable();
             $table->string('name');
             $table->integer('work_id')->unsigned();
             $table->foreign('work_id')->references('id')->on('works');

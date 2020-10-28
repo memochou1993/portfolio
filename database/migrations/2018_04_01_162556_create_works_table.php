@@ -16,6 +16,8 @@ class CreateWorksTable extends Migration
         Schema::create('works', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title');
+            $table->string('begin_date')->nullable();
+            $table->string('end_date')->nullable();
             $table->text('content');
             $table->text('full_text')->nullable();
             $table->timestamps();
