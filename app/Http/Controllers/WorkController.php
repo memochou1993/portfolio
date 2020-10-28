@@ -25,7 +25,7 @@ class WorkController extends Controller
         }
 
         $works = $works
-            ->orderBy('end_date')
+            ->orderByDesc('end_date')
             ->paginate(20)
             ->appends(request()->input());
 

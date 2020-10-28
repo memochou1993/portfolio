@@ -23,7 +23,7 @@ class ViewComposer
     {
 	    $distinct_works = $work
             ->select('id', 'title', 'begin_date', 'end_date')
-            ->orderBy('end_date')
+            ->orderByDesc('end_date')
             ->get();
 
         $featured_tags = [
