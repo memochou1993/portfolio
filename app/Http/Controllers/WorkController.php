@@ -9,7 +9,7 @@ class WorkController extends Controller
 {
     public function index(Request $request)
     {
-        $works = Work::inRandomOrder();
+        $works = Work::query();
 
         $q = $request->q;
         $tag = $request->tag;
@@ -24,7 +24,10 @@ class WorkController extends Controller
             });
         }
 
-        $works = $works->paginate(20)->appends(request()->input());
+        $works = $works
+            ->orderBy('created_at')
+            ->paginate(20)
+            ->appends(request()->input());
 
         return view('works.index', [
             'works' => $works,
