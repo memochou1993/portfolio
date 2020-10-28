@@ -7,13 +7,12 @@
 
     <div class="card" hidden>
         <div class="card-header">
-            <div class="title text-center my-0">{!! $work->title !!}</div>
+            <div class="title text-center my-0">{{ $work->title }}</div>
         </div>
         
         <div class="card-body">
             <div class="text-right text-muted mb-3">
-                
-                {!! $work->date !!}
+                {{ $work->begin_date == $work->end_date ? $work->begin_date : $work->begin_date . ' - ' . $work->end_date }}
             </div>
 
             <div>
