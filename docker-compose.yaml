@@ -2,7 +2,7 @@ version: "3"
 
 services:
   app:
-    container_name: lexicon-server
+    container_name: portfolio-server
     build:
       context: .
       dockerfile: Dockerfile
@@ -27,7 +27,7 @@ services:
 
   mysql:
     image: mysql:5.7.32
-    container_name: lexicon-mysql
+    container_name: portfolio-mysql
     restart: always
     volumes:
       - mysql:/var/lib/mysql
