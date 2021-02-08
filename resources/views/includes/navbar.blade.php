@@ -50,9 +50,6 @@
 					<a href="//blog.epoch.tw" target="_blank" class="nav-link">部落格</a>
 				</li>
 				<li class="nav-item">
-					<a href="//archive.epoch.tw" target="_blank" class="nav-link">報告集</a>
-				</li>
-				<li class="nav-item">
 					<a href="//github.com/memochou1993" target="_blank" class="nav-link">GitHub</a>
 				</li>
 			@endauth
