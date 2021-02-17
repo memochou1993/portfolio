@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
 	<a class="navbar-brand" href="{{ route('home.index') }}">
-		周孝威作品集@if (!$agent->isMobile())（2012 - 2020）@endif
+		周孝威作品集@if (!$agent->isMobile())（2012 - {{ date("Y") }}）@endif
 	</a>
 	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 		<span class="navbar-toggler-icon"></span>
@@ -48,9 +48,6 @@
 			@else
 				<li class="nav-item">
 					<a href="//blog.epoch.tw" target="_blank" class="nav-link">部落格</a>
-				</li>
-				<li class="nav-item">
-					<a href="//archive.epoch.tw" target="_blank" class="nav-link">報告集</a>
 				</li>
 				<li class="nav-item">
 					<a href="//github.com/memochou1993" target="_blank" class="nav-link">GitHub</a>
