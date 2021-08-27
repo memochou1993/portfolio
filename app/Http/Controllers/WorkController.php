@@ -26,7 +26,7 @@ class WorkController extends Controller
 
         $works = $works
             ->orderByDesc('end_date')
-            ->paginate(20)
+            ->paginate(100)
             ->appends(request()->input());
 
         return view('works.index', [
