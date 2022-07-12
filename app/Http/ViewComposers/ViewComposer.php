@@ -30,6 +30,7 @@ class ViewComposer
             "Laravel",
             "Vue",
             "Go",
+            "Solidity",
         ];
 
         $distinct_ordinary_tags = $workTag
