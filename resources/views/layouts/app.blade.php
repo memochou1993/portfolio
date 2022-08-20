@@ -6,8 +6,8 @@
     
     <body>
         <div id="app">
-            <a id="scroll-to-top"><i class="fas fa-arrow-circle-up"></i></a>
-            
+            <a id="scroll-to-top"><i style="position:absolute;top:12px;left:12px;" class="fas fa-arrow-circle-up"></i></a>
+
             <div class="container my-4">
                 @include('includes.navbar')
 
